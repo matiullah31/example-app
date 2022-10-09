@@ -93,6 +93,29 @@ class MenuController extends BaseController
      */
 
     public function getMenuItems() {
-        throw new \Exception('implement in coding task 3');
+        //throw new \Exception('implement in coding task 3');
+
+        $menus = \DB::table('menu_items')->get();
+
+        return $this->getNthChild($menus);
     }
+
+
+    private function getNthChild($data,$children=[]) {
+
+        $i = 1;
+        foreach ($data as $key => $value) {
+            if( $value->parent_id = $menu->id ) 
+                    $children[] = $value
+
+            $i++;
+        }
+
+        if( count($data) === $i){
+            return $children;
+        }
+        return $this->getNthChild($data,$menu,$children);
+
+    }
+
 }
